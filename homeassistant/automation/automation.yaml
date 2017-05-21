@@ -1,0 +1,66 @@
+- alias: 'Lights on when someone comes home'
+  trigger:
+    - platform: state
+      entity_id: group.users
+      state: 'home'
+  condition:
+    condition: sun
+    after: sunset
+  action:
+    service: switch.turn_on
+    entity_id: switch.all
+
+- alias: 'Lights on when sun sets'
+  trigger:
+    platform: sun
+    event: sunset
+  condition:
+    condition: state
+    entity_id: group.users
+    state: 'home'
+  action:
+    service: switch.turn_on
+    entity_id: switch.all
+
+- alias: 'Windowlights on when sun sets'
+  trigger:
+    platform: sun
+    event: sunset
+  condition:
+    condition: state
+    entity_id: group.users
+    state: 'not_home'
+  action:
+    service: switch.turn_on
+    entity_id: switch.window
+
+- alias: 'Turn on F22'
+  trigger:
+    platform: time
+    after: '23:00:00'
+  action:
+    service: switch.turn_on
+    entity_id: switch.f22
+
+- alias: 'Alert door unlocked when noone home'
+  trigger:
+    platform: state
+    entity_id: group.users
+    state: 'not_home'
+  condition:
+    condition: state
+    entity_id: lock.ytterdrr
+    state: 'unlocked'
+  action:
+    service: notify.urban
+    data:
+      message: 'Nobody seems to be home but the door is unlocked'
+      title: 'Door unlocked'
+
+- alias: 'Lights of when sun rises'
+  trigger:
+    platform: sun
+    event: sunrise
+  action:
+    service: switch.turn_off
+    entity_id: switch.all

@@ -1,0 +1,12 @@
+- alias: 'Check door when sleep'
+  trigger:
+    platform: state
+    entity_id: switch.sleeping
+    state: 'on'
+  condition:
+    condition: state
+    entity_id: lock.ytterdrr
+    state: 'unlocked'
+  action:
+    service: shell_command.autoremote_door_open
+

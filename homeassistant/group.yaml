@@ -1,0 +1,33 @@
+  users:
+    name: all_users
+    entities:
+      - device_tracker.vanja_vm
+      - device_tracker.urban_nexus
+
+  lamps:
+    name: all_window
+    entities:
+      - switch.f21
+      - switch.f23
+      - switch.f24
+      - switch.f31
+      - switch.f32
+      - switch.f41
+#      - switch.f23
+#      - switch.f23
+
+  lamps2:
+    name: all
+    entities:
+      - switch.f11
+      - switch.f13
+      - switch.f21
+      - switch.f23
+      - switch.f24
+      - switch.f31
+      - switch.f32
+      - switch.f41
+#      - switch.f23
+#      - switch.f23
+
+

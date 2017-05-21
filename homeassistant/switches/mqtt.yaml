@@ -1,0 +1,22 @@
+#  Virtual MQTT switches maintain state
+#  over Home Assistant restarts. These switches
+#  mainly enable or disable automations. All
+#  switches have QOS = 1, which is guaranteed delivery
+#  at least once. It is important that switch state
+#  changes always are delivered.
+
+#  Sleeping turns on when my phone plugs in
+#  after a certain hour (via Tasker). It turns
+#  off when an alarm goes off (also via Tasker).
+#  Many automations depend on the state of this
+#  switch in order to not interrupt sleep.
+
+- platform: mqtt
+  name: "Sleeping"
+  state_topic: "nfc/sleeping"
+  command_topic: "nfc/sleeping"
+  qos: 1
+  payload_on: "yes"
+  payload_off: "no"
+  retain: true
+

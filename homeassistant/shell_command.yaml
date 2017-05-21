@@ -1,0 +1,1 @@
+autoremote_door_open: !secret autoremote_door_open_cmd

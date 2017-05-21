@@ -1,0 +1,5 @@
+# Weather Prediction
+- platform: yr
+
+- platform: tellstick
+  datatype_mask: 127
